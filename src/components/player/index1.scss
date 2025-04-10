@@ -1,0 +1,145 @@
+//components/player/index1.scss
+.audio-play {
+    height: 100vh;
+    background-color: #e0e5f8;
+    // position: fixed;
+    // z-index: 11;
+    // left: 0;
+    // bottom: 0;
+    width: 100%;
+    .drop-cont {
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 50px;
+        width: 50px;
+        transform: translate(-50%, -50%);
+        z-index: 6;
+        // border: 1px solid red;
+        .fa-solid {
+            font-size: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 7;
+            transition: all 0.5s;
+        }
+        .fa-play{
+            opacity: 0;
+            z-index: 6;
+        }
+        .fa-pause{
+            opacity: 0;
+            z-index: 6;
+        }
+    }
+
+    .audio-control {
+        .fa-solid{
+
+        }
+        .fa-heart {
+
+        }
+        .fa-share{
+            
+        }
+
+    }
+
+    .bar {
+        height: 5px;
+        width: 90%;
+        margin: 30px auto 10px;
+        background-color: #d8d8d8;
+        border-radius: 10px;
+    }
+    .inner {
+        height: 100%;
+        width: 0;
+        background-color: #333;
+        position: relative;
+        border-radius: 10px;
+    }
+
+    .dot {
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(50%, -50%);
+        background-color: #333;
+        border-radius: 50%;
+    }
+
+    .time-cont {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 60px;
+    }
+
+    .circle {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -200px;
+        left: 50%;
+    }
+
+    .circle1 {
+        transform: translate(-50%, -250%) scale(10);
+        background-color: #cdd4f3;
+        animation: circle1 5s infinite alternate-reverse linear;
+    }
+
+    .circle2 {
+        transform: translate(-50%, -150%) scale(10);
+        background-color: #dadff6;
+        z-index: 3;
+        animation: circle2 5s infinite alternate-reverse linear;
+    }
+
+    .circle3 {
+        transform: translate(-50%, -50%) scale(10);
+        background-color: #c1c8ef;
+        z-index: 4;
+        animation: circle3 5s infinite alternate-reverse linear;
+    }
+
+    @keyframes circle1 {
+        0% {
+            transform: translate(-50%, -250%) scale(10);
+        }
+        100% {
+            transform: translate(-50%, -180%) scale(10) ;
+        }
+    }
+
+    @keyframes circle2 {
+        0% {
+            transform: translate(-50%, -150%) scale(10);
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(10) ;
+        }
+    }
+
+    @keyframes circle3 {
+        0% {
+            transform: translate(-50%, 0) scale(10);
+        }
+        100% {
+            transform: translate(-50%, 30%) scale(10) ;
+        }
+    }
+
+}

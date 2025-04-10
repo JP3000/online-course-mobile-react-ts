@@ -1,0 +1,230 @@
+//components/player/index1.scss
+.audio-play {
+  height: 100vh;
+  background-color: #e0e5f8;
+  width: 100%;
+  
+  .drop-cont {
+      height: 10%;
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      svg {
+          cursor: pointer;
+          transition: transform 0.3s ease;
+          
+          &:active {
+              transform: translateY(3px);
+          }
+      }
+      
+      .adm-tag {
+          font-size: 30px;
+          padding: 8px 16px;
+          border-radius: 10px;
+      }
+  }
+
+  .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 70px;
+      width: 70px;
+      transform: translate(-50%, -50%);
+      z-index: 6;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:active {
+          transform: translate(-50%, -50%) scale(0.95);
+      }
+      
+      .fa-solid {
+          font-size: 50px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 7;
+          transition: all 0.3s ease;
+          color: #4a5bcf;
+      }
+      
+      .fa-play {
+          opacity: 1;
+      }
+      
+      .fa-pause {
+          opacity: 0;
+      }
+      
+      &.playing {
+          .fa-play {
+              opacity: 0;
+          }
+          .fa-pause {
+              opacity: 1;
+          }
+      }
+  }
+
+  .audio-control {
+      height: 10%;
+      position: fixed;
+      bottom: 120px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      
+      .control-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between; // 左右分布
+        padding: 0 15%; // 控制左右边距，保持间距
+        box-sizing: border-box;
+
+        .fa-solid {
+            font-size: 50px;
+            color: #4a5bcf;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            
+            &:hover {
+                transform: scale(1.1);
+            }
+            
+            &:active {
+                transform: scale(0.95);
+            }
+        }
+        
+        .fa-heart {
+            &.liked {
+                color: #ff4d4f;
+            }
+        }
+
+        .fa-share {
+            &.shared {
+                color: #ff4d4f;
+            }
+        }
+      }
+
+
+
+      .bar {
+        height: 10px;
+        width: 90%;
+        margin: 30px auto 10px;
+        background-color: rgba(216, 216, 216, 0.6);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: height 0.2s ease;
+        
+        &:hover {
+            height: 10px;
+        }
+        
+        .inner {
+            height: 100%;
+            width: 0;
+            background-color: #4a5bcf;
+            position: relative;
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+  
+        .dot {
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(50%, -50%);
+            background-color: #4a5bcf;
+            border-radius: 50%;
+            opacity: 1;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        
+        &:hover .dot {
+            opacity: 1;
+            transform: translate(50%, -50%) scale(1.2);
+        }
+
+        .time-cont {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            margin: auto;
+            margin-bottom: 60px;
+            font-size: 30px;
+            color: #666;
+        }
+    }
+  }
+
+
+  .circle {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      position: absolute;
+      bottom: -200px;
+      left: 50%;
+      opacity: 0.3;
+      z-index: -1;
+  }
+
+  .circle1 {
+      transform: translate(-50%, -250%) scale(10);
+      background-color: #cdd4f3;
+      animation: circle1 5s infinite alternate-reverse linear;
+  }
+
+  .circle2 {
+      transform: translate(-50%, -150%) scale(10);
+      background-color: #dadff6;
+      z-index: 3;
+      animation: circle2 5s infinite alternate-reverse linear;
+  }
+
+  .circle3 {
+      transform: translate(-50%, -50%) scale(10);
+      background-color: #c1c8ef;
+      z-index: 4;
+      animation: circle3 5s infinite alternate-reverse linear;
+  }
+
+  @keyframes circle1 {
+      0% {
+          transform: translate(-50%, -250%) scale(10);
+      }
+      100% {
+          transform: translate(-50%, -180%) scale(10);
+      }
+  }
+
+  @keyframes circle2 {
+      0% {
+          transform: translate(-50%, -150%) scale(10);
+      }
+      100% {
+          transform: translate(-50%, -50%) scale(10);
+      }
+  }
+
+  @keyframes circle3 {
+      0% {
+          transform: translate(-50%, 0) scale(10);
+      }
+      100% {
+          transform: translate(-50%, 30%) scale(10);
+      }
+  }
+}

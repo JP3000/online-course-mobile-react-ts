@@ -1,0 +1,6 @@
+.adm-space-item {
+    display: none;
+    &:last-of-type{
+        display: block;
+    }
+}
