@@ -10,12 +10,12 @@ interface BannerState {
 
 export const useBanner = create<BannerState>()(persist(
     (set, get) => ({
-        banner:[],
+        banner: [],
         fetchBanner: async () => {
             const res = await bannerGet();
             set({ banner: res.data.results });
         },
-        addBanner:(bannerObj) => {
+        addBanner: (bannerObj) => {
             const arr = get().banner;
             arr.push(bannerObj);
             set({ banner: [...arr] });

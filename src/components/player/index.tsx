@@ -89,7 +89,7 @@ export default function AudioPlay() {
               }
             }}
           />
-          <Tag color="primary">耀眼的播放器</Tag>
+          <Tag color="primary">播放器</Tag>
           <span></span>
         </div>
 

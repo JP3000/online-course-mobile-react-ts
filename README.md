@@ -1,54 +1,65 @@
-# React + TypeScript + Vite
+# 项目名称
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+在线知识付费平台（移动端）
 
-Currently, two official plugins are available:
+## 技术栈
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- TypeScript
+- Ant Mobile Design
+- LeanCloud
+- zustand
 
-## Expanding the ESLint configuration
+## 简介
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+该项目是 React+TypeScript+Ant Mobile Design+LeanCloud 搭建的在线知识付费平台移动端
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- 课程展示页：轮播图展示、课程列表展示、课程详情展示
+- 轮播课程：音频播放页、可用胶囊组件控制
+- 课程探索页：课程分类展示、课程搜索
+- 用户信息页：我的喜欢、头像、登录
+
+## 功能展示
+
+![展示](display.gif)
+
+## 快速上手
+
+- 克隆项目到本地
+
+```bash
+https://github.com/JP3000/online-course-mobile-react-ts.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 进入项目目录
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+cd online-course-mobile-react-ts
 ```
+
+- 依赖项
+
+```bash
+npm install
+```
+
+- 运行
+
+```bash
+npm run dev
+```
+
+## 测试账户
+
+账号：edison
+密码：123123
+
+## API 文档
+
+后端 API 参考 leanCloud 官方 REST API 文档
+
+## 说明
+
+- 本项目参考 qf 教育平台后台管理系统，感谢 qf 教育前端课程。
+- 本项目仅供学习交流使用，请勿用于商业用途。
+- 如有疑问，请提交 issue。
