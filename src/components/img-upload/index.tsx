@@ -32,10 +32,13 @@ export default function ImgUpload() {
 
   const handleUpload = async (file: File) => {
     // console.log(file);
-    //采用promise优化了图片上传的操作
+    // 采用promise优化了图片上传的操作
     const base64 = await getBase64(file);
-    const res: any = await new Cloud.File(`${file.name}`, { base64 }).save();
-    const { url } = res.attributes;
+    // Bypass Leancloud
+    // const res: any = await new Cloud.File(`${file.name}`, { base64 }).save();
+    // const { url } = res.attributes;
+    const url = base64 as string; // 使用base64作为本地图片预览
+
     if (userInfo) {
       const { objectId, sessionToken } = userInfo;
       await userUpdate(objectId, sessionToken, { avatar: url as string }); //更新后端

@@ -8,7 +8,7 @@ function getImageUrl(idx: number) {
 }
 
 export default function TodayGrid() {
-  const gridData = ["Java编程", "前端课程", "UI设计", "架构师"];
+  const gridData = ["下班冥想", "流瑜伽", "减脂训练", "室内攀岩"];
   return (
     <div>
       <Grid columns={4} gap={8}>

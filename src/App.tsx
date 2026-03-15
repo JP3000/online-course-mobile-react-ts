@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import Today from "./views/today";
 import Explore from "./views/explore";
 import Mine from "./views/mine";
@@ -21,6 +21,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Main />}>
+            <Route index element={<Navigate to="/today" replace />} />
             <Route path="/today" element={<Today />}></Route>
             <Route path="/explore" element={<Explore />}></Route>
             <Route path="/mine" element={<Mine />}></Route>

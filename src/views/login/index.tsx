@@ -19,8 +19,8 @@ export default function Login() {
     loginFetch(values, navigate, target as string);
   };
   const initialValues = {
-    username: "edison",
-    password: "123123",
+    username: "admin",
+    password: "admin",
   };
   const handleBack = () => {
     navigate(-1);

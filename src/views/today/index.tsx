@@ -19,7 +19,7 @@ export default function Today() {
           <h1>{userInfo ? userInfo.username : "加入NiceDay"}</h1>
           <p>注册或登录账号</p>
         </div>
-        <Avatar src={userInfo!.avatar} />
+        <Avatar src={userInfo?.avatar || "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"} />
       </div>
       <div className="search-cont">
         <SearchBar placeholder="点swiper体验播放器、点列表文字访问详情"></SearchBar>

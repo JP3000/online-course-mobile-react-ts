@@ -1,6 +1,8 @@
 import axios from "axios";
 import { ID, KEY, BASE } from "../config/index";
 import { Toast } from "antd-mobile";
+import { MOCK_BANNERS, MOCK_CATEGORIES, MOCK_COURSES, MOCK_USER, MOCK_COLLECTS } from "./mock";
+
 const instance = axios.create({
   baseURL: BASE + "/1.1",
   headers: {
@@ -12,26 +14,87 @@ const instance = axios.create({
 
 // 添加请求拦截器
 instance.interceptors.request.use(function (config) {
-  // 在发送请求之前做些什么
-  console.log('请求拦截器');
-  // alert('请求成功')
+  console.log('拦截请求:', config.url);
+  const url = config.url || "";
+  
+  let mockData: any = null;
+  if (url.includes("login") || url.includes("users")) {
+    if (config.method === 'post' && url.includes("login")) {
+      mockData = MOCK_USER;
+      Toast.show({ content: 'Mock 登录成功', icon: 'success' });
+    } else if (config.method === 'put' && url.includes("users")) {
+      mockData = { ...MOCK_USER, updatedAt: new Date().toISOString() };
+    }
+  } else if (url.includes("/classes/ReactBanner")) {
+    mockData = { results: MOCK_BANNERS };
+  } else if (url.includes("/classes/ReactCategory")) {
+    mockData = { results: MOCK_CATEGORIES };
+  } else if (url.includes("/classes/ReactCourse")) {
+    const parts = url.split("/");
+    const lastPart = parts[parts.length - 1];
+    if (lastPart === "ReactCourse") {
+      mockData = { results: MOCK_COURSES };
+    } else {
+      mockData = MOCK_COURSES.find(c => c.objectId === lastPart) || MOCK_COURSES[0];
+    }
+  } else if (url.includes("/classes/ReactCollect")) {
+    mockData = { results: MOCK_COLLECTS };
+  }
+
+  if (mockData) {
+    // 关键：返回 rejected promise 以跳过网络请求
+    return Promise.reject({
+      config,
+      mockData,
+      isMock: true
+    });
+  }
+
   return config;
 }, function (error) {
-  // 对请求错误做些什么
   return Promise.reject(error);
 });
 
 // 添加响应拦截器
 instance.interceptors.response.use(function (response) {
-  // 2xx 范围内的状态码都会触发该函数。
-  // 对响应数据做点什么
-  return response;// 此处的return不能丢，结果会给到发请求的then
+  return response;
 }, function (error) {
-  // 超出 2xx 范围的状态码都会触发该函数。
-  // 对响应错误做点什么
-  // alert('操作失败');
-  console.log("响应拦截器", error);
-  // return Promise.reject(error);
+  // 如果是我们在请求拦截器中标记的 Mock
+  if (error.isMock) {
+    return Promise.resolve({
+      data: error.mockData,
+      status: 200,
+      statusText: "OK",
+      headers: {},
+      config: error.config,
+    });
+  }
+  
+  // 兜底：如果请求已经发出去了但失败了，再次尝试匹配
+  const config = error.config;
+  const url = config?.url || "";
+  let mockData: any = null;
+  if (url.includes("login")) mockData = MOCK_USER;
+  else if (url.includes("/classes/ReactBanner")) mockData = { results: MOCK_BANNERS };
+  else if (url.includes("/classes/ReactCategory")) mockData = { results: MOCK_CATEGORIES };
+  else if (url.includes("/classes/ReactCourse")) {
+    const parts = url.split("/");
+    const lastPart = parts[parts.length - 1];
+    if (lastPart === "ReactCourse") mockData = { results: MOCK_COURSES };
+    else mockData = MOCK_COURSES.find(c => c.objectId === lastPart) || MOCK_COURSES[0];
+  }
+
+  if (mockData) {
+    return Promise.resolve({
+      data: mockData,
+      status: 200,
+      statusText: "OK",
+      headers: {},
+      config: config,
+    });
+  }
+
+  return Promise.reject(error);
 });
 
 export default instance;
