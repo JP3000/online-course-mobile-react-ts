@@ -25,7 +25,7 @@ export interface ICollectParams {
 
 
 export const userCollect = (params: ICollectParams) => {
-    return request.post('classes/ReactCollect', params)
+    return request.post('/classes/ReactCollect', params)
 }
 
 // 查询收藏
@@ -35,7 +35,7 @@ export interface ISearchCollectParams {
 }
 
 export const userCollectGet = (search: ISearchCollectParams) => {
-    return request.get('classes/ReactCollect', {
+    return request.get('/classes/ReactCollect', {
         params:{
             where: search,
         },
@@ -44,7 +44,7 @@ export const userCollectGet = (search: ISearchCollectParams) => {
 
 // 删除收藏
 export const userCollectDel = (collectId: string) => {
-    return request.delete(`classes/ReactCollect/${collectId}`)
+    return request.delete(`/classes/ReactCollect/${collectId}`)
 }
 
 // 更新用户信息

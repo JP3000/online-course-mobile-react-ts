@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "antd-mobile": "^5.39.0",
+    "antd-mobile": "^5.42.3",
     "antd-mobile-icons": "^0.3.0",
     "axios": "^1.8.4",
     "leancloud-storage": "^4.15.2",

@@ -16,50 +16,64 @@ export default function Detail() {
   const params = useParams();
 
   useEffect(() => {
-    // 课程详情
+    const id = params.id as string;
+
     courseDetailGet(params.id as string).then((res) => {
-      // console.log("课程详情的调回数据", res);
       setDetail(res.data);
     });
 
-    // 收藏状态
+    if (!userInfo?.objectId) {
+      setCollect(false);
+      setCollectId("");
+      return;
+    }
+
     userCollectGet({
-      userId: userInfo?.objectId,
-      courseId: params.id as string,
+      userId: userInfo.objectId,
+      courseId: id,
     }).then((res) => {
-      // console.log("get collect", res);
-      // 如果有数据，则说明已经收藏
       if (res.data.results.length) {
         setCollect(true);
         setCollectId(res.data.results[0].objectId);
+      } else {
+        setCollect(false);
+        setCollectId("");
       }
     });
-  }, []);
+  }, [params.id, userInfo?.objectId]);
 
   const handleBack = () => {
     navigate(-1);
   };
 
   const handleCollect = () => {
-    //判断用户的登录状态，只有登录了才能拿到userId进行处理
     if (!userInfo) {
       navigate("/login");
-    } else {
-      const userId = userInfo.objectId;
-      const courseId = detail?.objectId;
-      const { name, poster, isVip, intro } = detail as CourseType;
-      userCollect({ userId, courseId, name, poster, isVip, intro }).then(
-        (res) => {
-          setCollect(!collect);
-          setCollectId(res.data.objectId);
-        }
-      );
+      return;
     }
+
+    if (!detail) {
+      return;
+    }
+
+    const userId = userInfo.objectId;
+    const courseId = detail.objectId;
+    const { name, poster, isVip, intro } = detail;
+    userCollect({ userId, courseId, name, poster, isVip, intro }).then((res) => {
+      setCollect(true);
+      setCollectId(res.data.objectId);
+    });
   };
 
   const handleDel = () => {
-    userCollectDel(collectId);
-    setCollect(!collect);
+    if (!collectId) {
+      return;
+    }
+
+    userCollectDel(collectId).then(() => {
+      setCollect(false);
+      setCollectId("");
+    });
   };
 
   const right = (

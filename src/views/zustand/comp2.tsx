@@ -1,4 +1,3 @@
-import React from "react";
 import { useCounter } from "../../store/count";
 import { useBanner } from "../../store/banner";
 export default function CompB() {

@@ -4,7 +4,7 @@ import "./skeleton.scss";
 export default function CourseSkeleton() {
   return (
     <div className="course-list">
-      {[1, 2, 3, 4].map((item, index) => {
+      {[1, 2, 3, 4].map((_, index) => {
         return (
           <div className="course" key={index}>
             <Skeleton animated className="course-skeleton" />

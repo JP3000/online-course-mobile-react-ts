@@ -31,7 +31,7 @@ function App() {
           <Route path="/zustand" element={<TestZustand />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route
-            path="mine/collect"
+            path="/mine/collect"
             element={
               <Guard>
                 <Collect />

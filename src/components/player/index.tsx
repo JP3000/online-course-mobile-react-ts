@@ -1,4 +1,4 @@
-import React, { TouchEventHandler, useEffect, useRef, useState } from "react";
+import { TouchEventHandler, useEffect, useRef, useState } from "react";
 import { Popup, Tag } from "antd-mobile";
 import { DownOutline } from "antd-mobile-icons";
 import "./index.scss";

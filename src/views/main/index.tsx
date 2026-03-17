@@ -1,4 +1,3 @@
-import React from "react";
 import TabBottom from "../../components/tab-bottom";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useUserStore } from "../../store/user";
@@ -11,7 +10,12 @@ export default function Main() {
     if (userInfo || pathname.indexOf("mine") === -1) {
       return <Outlet />;
     } else {
-      return <Navigate to="/login" />;
+      return (
+        <Navigate
+          to={`/login?target=${encodeURIComponent(pathname)}`}
+          replace
+        />
+      );
     }
   };
   return (

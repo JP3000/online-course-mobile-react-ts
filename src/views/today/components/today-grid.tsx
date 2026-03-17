@@ -1,6 +1,4 @@
 import { Grid } from "antd-mobile";
-import React from "react";
-import {} from "../../../assets/img/ic_today_1.png";
 
 function getImageUrl(idx: number) {
   return new URL(`../../../assets/img/ic_today_${idx + 1}.png`, import.meta.url)

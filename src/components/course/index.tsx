@@ -1,5 +1,5 @@
 // 课程列表封装
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { InfiniteScroll } from "antd-mobile";
 import "./index.scss";
 import { courseGet, ICourseParams } from "../../api/course";
@@ -21,22 +21,22 @@ export default function Course({ condition }: Props) {
     setHasMore(true);
     page = 1;
     courseGet(condition, page).then((res) => {
-      // console.log('课程组件',page);
-      setList(res.data.results);
+      const { results } = res.data;
+      setList(results);
+      setHasMore(results.length === 4);
       page++;
     });
   }, [condition]);
 
   //触底逻辑
   const loadMore = async () => {
-    courseGet(condition, page).then((res) => {
-      const { results } = res.data;
-      if (results.length) {
-        setList([...list, ...results]);
-        page++;
-      }
-      setHasMore(results.length >= 8);
-    });
+    const res = await courseGet(condition, page);
+    const { results } = res.data;
+    if (results.length) {
+      setList((prev) => [...prev, ...results]);
+      page++;
+    }
+    setHasMore(results.length === 4);
   };
 
   return (

@@ -1,5 +1,4 @@
 // components/bubble/index.tsx
-import React from "react";
 import { FloatingBubble } from "antd-mobile";
 import { CloseOutline } from "antd-mobile-icons";
 import "./index.scss";

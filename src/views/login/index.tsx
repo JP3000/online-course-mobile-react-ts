@@ -8,21 +8,22 @@ export default function Login() {
   const navigate = useNavigate();
   const { loginFetch, isLoading } = useUserStore((state) => state);
   const { search } = useLocation();
-  // console.log("search", search);
-  const { target } = qs.parse(search);
+  const parsed = qs.parse(search);
+  const target = typeof parsed.target === "string" ? parsed.target : "";
 
   const onFinish = (values: IUserParams) => {
-    console.log(values);
-    // userLogin(values).then((res) => {
-    //   console.log(res);
-    // });
-    loginFetch(values, navigate, target as string);
+    loginFetch(values, navigate, target);
   };
   const initialValues = {
     username: "admin",
     password: "admin",
   };
   const handleBack = () => {
+    if (target) {
+      navigate("/today", { replace: true });
+      return;
+    }
+
     navigate(-1);
   };
   return (

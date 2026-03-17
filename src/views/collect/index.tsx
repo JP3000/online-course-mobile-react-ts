@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CustomNav from "../../components/custom-nav";
 import CourseList from "../../components/course/course-list";
 import { userCollectGet } from "../../api/user";
@@ -11,11 +11,15 @@ export default function Collect() {
   const [list, setList] = useState<CourseType[]>([]);
 
   useEffect(() => {
-    userCollectGet({ userId: userInfo?.objectId }).then((res) => {
-      // console.log(res.data.results);
+    if (!userInfo?.objectId) {
+      setList([]);
+      return;
+    }
+
+    userCollectGet({ userId: userInfo.objectId }).then((res) => {
       setList(res.data.results);
     });
-  }, []);
+  }, [userInfo?.objectId]);
 
   return (
     <div>

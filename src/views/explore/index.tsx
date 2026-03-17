@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.scss";
 import Course from "../../components/course";
 import { categoryGet, ICourseParams } from "../../api/course";

@@ -1,5 +1,4 @@
 import { NavBar } from "antd-mobile";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export interface ICustomNavProps {

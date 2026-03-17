@@ -1,43 +1,163 @@
-.mine {
-    display: flex;
-    flex-direction: column;
-    .user {
-        display: flex;
-        padding: 5rem;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 60px;
-        .info {
-            h1 {
-                font-size: 2rem;
-                color: #293a74;
-                font-weight: bold;
-                margin-bottom: 10px;
-            }
-            p {
-                font-size: 1.2rem;
-                color: #293a74;
-                font-weight: bold;
-                margin-bottom: 10px;
-            }
+.mine-page {
+    min-height: calc(100vh - 80px);
+    padding: 2.4rem 2rem 12rem;
+    background:
+        radial-gradient(circle at 10% -10%, rgba(34, 120, 255, 0.2) 0, rgba(34, 120, 255, 0) 40%),
+        radial-gradient(circle at 90% 8%, rgba(15, 181, 140, 0.18) 0, rgba(15, 181, 140, 0) 38%),
+        linear-gradient(180deg, #f5f9ff 0%, #f7f9ff 40%, #fbfdff 100%);
+
+    .mine-hero {
+        position: relative;
+        overflow: hidden;
+        border-radius: 2.6rem;
+        background: linear-gradient(135deg, #4e80f1 0%, #2b57ca 58%, #173890 100%);
+        box-shadow: 0 1.4rem 3.6rem rgba(25, 56, 132, 0.28);
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 20rem;
+            height: 20rem;
+            right: -6rem;
+            top: -8rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
         }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 16rem;
+            height: 16rem;
+            left: -6rem;
+            bottom: -9rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+        }
+    }
+
+    .mine-hero__content {
+        position: relative;
+        z-index: 1;
+        padding: 2.8rem 2.4rem 2.6rem;
+    }
+
+    .mine-profile {
+        display: flex;
+        align-items: center;
+        gap: 1.8rem;
+    }
+
+    .mine-profile__avatar {
+        flex-shrink: 0;
+
+        .adm-avatar {
+            width: 8.2rem;
+            height: 8.2rem;
+            border: 0.3rem solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 0.8rem 2rem rgba(13, 33, 86, 0.34);
+        }
+    }
+
+    .mine-profile__text {
         h1 {
-            font-size: 5rem;
-            color: #293a74;
-            font-weight: bold;
-            margin-bottom: 10px;
+            margin: 0 0 0.8rem;
+            font-size: 3.8rem;
+            line-height: 1.2;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        p {
+            margin: 0;
+            font-size: 2rem;
+            color: rgba(248, 252, 255, 0.88);
         }
     }
-    .list-cont {
+
+    .mine-tags {
+        margin-top: 2rem;
         display: flex;
-        flex-direction: column;
-        margin-bottom: 6rem;
-        border: 1px solid black;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+
+        span {
+            display: inline-flex;
+            align-items: center;
+            height: 3.2rem;
+            padding: 0 1.2rem;
+            font-size: 1.7rem;
+            color: #f3f9ff;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
     }
-    .logout {
-        margin-top: 5rem;
+
+    .mine-section {
+        margin-top: 2.4rem;
+    }
+
+    .mine-section__title {
+        margin: 0 0 1.1rem;
+        padding-left: 0.4rem;
+        font-size: 2.2rem;
+        color: #32477f;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+    }
+
+    .mine-list {
+        border-radius: 2rem;
+        overflow: hidden;
+        box-shadow: 0 1rem 2.8rem rgba(22, 50, 116, 0.08);
+    }
+
+    .mine-item {
+        --prefix-width: 4.8rem;
+
+        .adm-list-item-content-main {
+            font-size: 2.3rem;
+            color: #1f2f5f;
+            font-weight: 600;
+        }
+
+        .adm-list-item-content-description {
+            margin-top: 0.6rem;
+            font-size: 1.8rem;
+            color: #7988b1;
+        }
+
+        .adm-list-item-content-extra {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .mine-item__icon-wrap {
+        width: 3.6rem;
+        height: 3.6rem;
+        border-radius: 1.2rem;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, #eaf1ff 0%, #dce7ff 100%);
+    }
+
+    .mine-item__arrow {
+        color: #95a5cf;
+        font-size: 2rem;
+    }
+
+    .mine-logout {
+        margin-top: 3rem;
+        height: 4.6rem;
+        font-size: 2.2rem;
+        font-weight: 600;
+        color: #b43e4e;
+        background: #ffffff;
+        box-shadow: 0 1rem 2.4rem rgba(160, 59, 75, 0.08);
+        border-radius: 999px;
     }
 }

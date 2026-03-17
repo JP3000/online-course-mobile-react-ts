@@ -2,7 +2,6 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 // import "reset-css";
-import Cloud from "leancloud-storage";
 import App from "./App.tsx";
 import { initRem } from "./utils/rem";
 initRem(); //rem适配
